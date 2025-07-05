@@ -6,7 +6,6 @@ export const useDashboardData = () => {
   const [data, setData] = useState<SocialMetricsData[]>([]);
   const [filters, setFilters] = useState<FilterState>({
     platform: '',
-    category: '',
     dateRange: {
       start: '',
       end: '',

@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getUniquePlatforms, getUniqueCategories } from '@/lib/mock-data';
+import { getUniquePlatforms } from '@/lib/mock-data';
 import { useAuthStore } from '@/lib/store';
 
 export interface FilterState {
   platform: string;
-  category: string;
   dateRange: {
     start: string;
     end: string;
@@ -20,18 +19,12 @@ interface FilterPanelProps {
 
 export default function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
   const [platforms, setPlatforms] = useState<string[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
   const { user } = useAuthStore();
 
   useEffect(() => {
     const loadData = async () => {
       const uniquePlatforms = await getUniquePlatforms();
       setPlatforms(uniquePlatforms);
-
-      if (user) {
-        const uniqueCategories = await getUniqueCategories();
-        setCategories(uniqueCategories);
-      }
     };
     loadData();
   }, [user]);
@@ -56,7 +49,6 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
   const resetFilters = () => {
     onFiltersChange({
       platform: '',
-      category: '',
       dateRange: {
         start: '',
         end: '',
@@ -78,42 +70,37 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* Platform Filter */}
-        <div>
+        <div className="relative">
           <label className="block text-sm font-medium text-foreground mb-2">
             Platform
           </label>
-          <select
-            value={filters.platform}
-            onChange={(e) => handleFilterChange('platform', e.target.value)}
-            className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-          >
-            <option value="">All platforms</option>
-            {platforms.map((platform) => (
-              <option key={platform} value={platform}>
-                {platform}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={filters.platform}
+              onChange={(e) => handleFilterChange('platform', e.target.value)}
+              className="w-full px-3 py-2 bg-white border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none"
+              style={{
+                WebkitAppearance: 'none',
+                MozAppearance: 'none'
+              }}
+            >
+              <option value="">All platforms</option>
+              {platforms.map((platform) => (
+                <option key={platform} value={platform}>
+                  {platform}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-foreground/70">
+              <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+              </svg>
+            </div>
+          </div>
         </div>
 
-        {/* Category Filter */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
-            Category
-          </label>
-          <select
-            value={filters.category}
-            onChange={(e) => handleFilterChange('category', e.target.value)}
-            className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-          >
-            <option value="">All categories</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
+        {/* Empty column for spacing */}
+        <div className="hidden md:block"></div>
 
         {/* Start Date */}
         <div>
@@ -124,7 +111,7 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
             type="date"
             value={filters.dateRange.start}
             onChange={(e) => handleDateRangeChange('start', e.target.value)}
-            className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+            className="w-full px-3 py-2 bg-white border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
           />
         </div>
 
@@ -137,7 +124,7 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
             type="date"
             value={filters.dateRange.end}
             onChange={(e) => handleDateRangeChange('end', e.target.value)}
-            className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+            className="w-full px-3 py-2 bg-white border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
           />
         </div>
       </div>
@@ -149,17 +136,6 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
             Platform: {filters.platform}
             <button
               onClick={() => handleFilterChange('platform', '')}
-              className="ml-2 text-primary hover:text-primary/80"
-            >
-              ×
-            </button>
-          </span>
-        )}
-        {filters.category && (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
-            Category: {filters.category}
-            <button
-              onClick={() => handleFilterChange('category', '')}
               className="ml-2 text-primary hover:text-primary/80"
             >
               ×
