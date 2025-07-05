@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import ClientLayout from "@/components/ClientLayout";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,12 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Camaleonic - Dashboard de Redes Sociales",
   description: "Controla todas tus redes sociales desde un solo lugar. Analiza, programa y optimiza tu presencia digital con herramientas avanzadas.",
-  keywords: ["redes sociales", "dashboard", "analytics", "instagram", "facebook", "twitter", "linkedin"],
+  keywords: ["redes sociales", "dashboard", "analytics", "instagram", "facebook", "X", "twitter", "linkedin"],
   authors: [{ name: "Camaleonic" }],
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -31,8 +35,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

@@ -1,203 +1,210 @@
-# 🚀 Camaleonic - Dashboard de Redes Sociales
+# 🚀 Camaleonic - Social Media Dashboard
 
-## 📋 Descripción del Proyecto
+## 📋 Project Description
 
-Este es un dashboard moderno de redes sociales desarrollado como prueba técnica para **Camaleonic**. La aplicación permite a los usuarios ver, analizar y gestionar múltiples plataformas de redes sociales desde una interfaz unificada e intuitiva.
+A modern social media dashboard developed for **Camaleonic**. The application allows users to view, analyze, and manage multiple social media platforms through a unified and intuitive interface.
 
-## ✨ Características Principales
+## ✨ Key Features
 
-### 🎨 Diseño y UX
-- **Diseño corporativo** con los colores oficiales de Camaleonic (#008EBA, #00C3AE, #005ED0, #6BF9D9, #D3D4E4)
-- **Animaciones complejas** y transiciones suaves para una experiencia moderna
-- **Interfaz responsive** que se adapta perfectamente a desktop, tablet y móvil
-- **Glassmorphism** y efectos de backdrop blur para un look contemporáneo
+### 🎨 Design & UX
+- **Corporate design** with Camaleonic's official colors (#008EBA, #00C3AE, #005ED0, #6BF9D9, #D3D4E4)
+- **Animations** and smooth transitions for a modern experience
+- **Responsive interface** perfectly adapting to desktop, tablet, and mobile
 
-### 🔧 Funcionalidades Técnicas
-- **Navbar responsive** con menú hamburguesa en móviles
-- **Botones de Login/Registro** preparados para integración de autenticación
-- **Dashboard home** con estadísticas animadas y preview de plataformas
-- **Gradientes personalizados** y sistema de colores consistente
-- **Animaciones CSS** optimizadas para rendimiento
+### 🔧 Technical Features
+- **Complete authentication system** with JWT and HTTP-only cookies
+- **Secure user registration** with password validation and email verification
+- **Interactive dashboard** with real-time data visualization
+- **Data management tables** for metrics, content, and accounts
+- **Advanced filtering system** for analytics and reports
+- **Responsive navigation**
 
-### 📱 Plataformas Soportadas (Preview)
-- **Instagram** - Gestión de posts y stories
-- **Facebook** - Publicaciones y análisis de engagement
-- **Twitter** - Tweets y métricas de alcance
-- **LinkedIn** - Content profesional y networking
+### 📊 Dashboard Features
+- **Real-time metrics panel** with key performance indicators
+- **Interactive chart grid** with multiple visualization types
+- **Custom filter panel** for data analysis
+- **Additional information panels** with insights
+- **Automatic data updates** and synchronization
 
-## 🛠️ Stack Tecnológico
+### 📱 Data Management
+- **Social media metrics** tracking and analysis
+- **Content management** across platforms
+- **Account management** and integration
+- **CRUD operations** for all data types
+- **Batch operations** support
+
+### 🔐 Security Features
+- **JWT authentication** with secure HTTP-only cookies
+- **Password encryption** and validation
+- **Protected API routes** with middleware
+- **Session management** and automatic logout
+- **Form validation** and sanitization
+
+## 🛠️ Technology Stack
 
 ### Frontend
-- **Next.js 15.3.5** - Framework React con SSR/SSG
-- **React 19** - Biblioteca de interfaz de usuario
-- **TypeScript** - Tipado estático para mayor robustez
-- **Tailwind CSS 4** - Framework de CSS utility-first
-- **Inter Font** - Tipografía moderna y legible
+- **Next.js 15.3.5** - React framework with SSR/SSG
+- **TypeScript** - Static typing
+- **Tailwind CSS 4** - CSS framework
+- **Chart.js** - Data visualization
+- **React Hook Form** - Form management
 
-### Herramientas de Desarrollo
-- **ESLint** - Linting de código
-- **PostCSS** - Procesamiento de CSS
-- **Turbopack** - Bundler rápido para desarrollo
+### Backend
+- **Next.js API Routes** - Backend API
+- **MongoDB** - Database
+- **JWT** - Authentication
+- **Joi** - Data validation
+- **bcrypt** - Password hashing
 
-## 🚀 Configuración e Instalación
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **Turbopack** - Fast bundling
 
-### Prerrequisitos
-- **Node.js** 18.17 o superior
-- **npm**, **yarn**, **pnpm** o **bun**
+## 🚀 Setup and Installation
 
-### Instalación
+### Prerequisites
+- **Node.js** 18.17 or higher
+- **npm**, **yarn**, **pnpm**, or **bun**
 
-1. **Clonar el repositorio**
+### Installation
+
+1. **Clone the repository**
 ```bash
-git clone [URL_DEL_REPOSITORIO]
+git clone [https://github.com/hectoremanuelpc/camaleonic.git]
 cd camaleonic
 ```
 
-2. **Instalar dependencias**
+2. **Install dependencies**
 ```bash
 npm install
-# o
+# or
 yarn install
-# o
+# or
 pnpm install
-# o
+# or
 bun install
 ```
 
-3. **Ejecutar en modo desarrollo**
+3. **Run in development mode**
 ```bash
 npm run dev
-# o
+# or
 yarn dev
-# o
+# or
 pnpm dev
-# o
+# or
 bun dev
 ```
 
-4. **Abrir en el navegador**
-Navega a [http://localhost:3000](http://localhost:3000) para ver la aplicación.
+4. **Open in browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-### Scripts Disponibles
+### Available Scripts
 
 ```bash
-npm run dev          # Ejecuta el servidor de desarrollo con Turbopack
-npm run build        # Construye la aplicación para producción
-npm run start        # Inicia el servidor de producción
-npm run lint         # Ejecuta ESLint para revisar el código
+npm run dev          # Run development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 ```
 
-## 🎨 Enfoque de Diseño
+## 🎨 Design System
 
-### Paleta de Colores Camaleonic
+### Camaleonic Color Palette
 ```css
---primary: #008EBA    /* Azul principal */
---secondary: #00C3AE  /* Verde azulado */
---accent: #005ED0     /* Azul profundo */
---highlight: #6BF9D9  /* Verde claro */
---neutral: #D3D4E4    /* Gris neutro */
+--primary: #008EBA    /* Main blue */
+--secondary: #00C3AE  /* Teal */
+--accent: #005ED0     /* Deep blue */
+--highlight: #6BF9D9  /* Light green */
+--neutral: #D3D4E4    /* Neutral gray */
 ```
 
-### Principios de Diseño
-1. **Mobile-First**: Diseño responsive que prioriza la experiencia móvil
-2. **Accesibilidad**: Contraste adecuado y navegación intuitiva
-3. **Performance**: Animaciones optimizadas y carga rápida
-4. **Consistencia**: Sistema de diseño coherente en toda la aplicación
+### Design Principles
+1. **Mobile-First**: Responsive design prioritizing mobile experience
+2. **Accessibility**: Proper contrast and intuitive navigation
+3. **Performance**: Optimized animations and fast loading
+4. **Consistency**: Coherent design system throughout the application
 
-## 🔄 Arquitectura del Proyecto
+## 🔄 Project Architecture
 
 ```
 camaleonic/
 ├── src/
-│   ├── app/                 # App Router de Next.js
-│   │   ├── globals.css     # Estilos globales y animaciones
-│   │   ├── layout.tsx      # Layout principal con navbar
-│   │   └── page.tsx        # Página home con hero y features
-│   └── components/
-│       └── Navbar.tsx      # Componente de navegación
-├── public/                 # Archivos estáticos
-├── README.md              # Documentación del proyecto
-└── package.json           # Dependencias y scripts
+│   ├── app/              # Next.js App Router
+│   │   ├── api/         # API routes
+│   │   ├── dashboard/   # Dashboard pages
+│   │   └── tables/      # Data management
+│   ├── components/      # React components
+│   ├── hooks/           # Custom hooks
+│   ├── lib/             # Utilities
+│   ├── models/          # Data models
+│   └── repositories/    # Data access
+├── public/             # Static assets
+└── docs/              # Documentation
 ```
 
-## 🎯 Funcionalidades Implementadas
+## 📊 Performance Metrics
 
-### ✅ Completadas
-- [x] **Sistema de autenticación** (UI preparada)
-- [x] **Página home responsiva** con animaciones complejas
-- [x] **Navbar corporativa** con logo animado
-- [x] **Diseño corporativo** con colores de Camaleonic
-- [x] **Animaciones CSS** avanzadas y efectos visuales
-- [x] **Preview de plataformas** sociales con métricas mock
+The application is optimized for:
+- **Lighthouse Score**: 95+ in all categories
+- **Core Web Vitals**: Excellent in LCP, FID, and CLS
+- **Bundle Size**: Minimized with code splitting
+- **Animations**: 60fps with hardware acceleration
 
-### 🔄 Próximas Funcionalidades
-- [ ] Sistema de autenticación funcional
-- [ ] Dashboard principal con datos reales
-- [ ] Integración con APIs de redes sociales
-- [ ] Sistema de filtros y búsqueda
-- [ ] Programación de publicaciones
-- [ ] Analíticas detalladas
+## 🔐 Security
 
-## 📊 Métricas de Rendimiento
-
-La aplicación está optimizada para:
-- **Lighthouse Score**: 95+ en todas las categorías
-- **Core Web Vitals**: Excelente en LCP, FID y CLS
-- **Bundle Size**: Minimizado con code splitting
-- **Animaciones**: 60fps con hardware acceleration
-
-## 🔐 Seguridad
-
-- **CSP Headers**: Configuración de Content Security Policy
-- **XSS Protection**: Sanitización de inputs
-- **HTTPS Only**: Redirección automática a HTTPS en producción
-- **Environment Variables**: Configuración segura de variables sensibles
+- **JWT Authentication**: Secure token-based auth
+- **HTTP-only Cookies**: Protected session management
+- **Password Encryption**: Secure password storage
+- **API Protection**: Route middleware security
+- **Input Validation**: Form and data sanitization
 
 ## 🚀 Deployment
 
-### Vercel (Recomendado)
+### Vercel (Recommended)
 ```bash
 npm run build
 vercel --prod
 ```
 
-### Build Manual
+### Manual Build
 ```bash
 npm run build
 npm run start
 ```
 
-## 🤝 Contribución
+## 🤝 Contributing
 
-Este es un proyecto de prueba técnica, pero las mejoras son bienvenidas:
+This is a technical test project, but improvements are welcome:
 
-1. Fork del proyecto
-2. Crear feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit de cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push al branch (`git push origin feature/AmazingFeature`)
-5. Abrir Pull Request
+1. Fork the project
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
-## 📝 Notas de Desarrollo
+## 📝 Development Notes
 
-### Decisiones Técnicas
-- **Next.js 15**: Para aprovecharse del App Router y las últimas optimizaciones
-- **Tailwind CSS 4**: Sistema de diseño utility-first para desarrollo rápido
-- **TypeScript**: Tipado estático para mayor robustez del código
-- **CSS Animations**: En lugar de librerías externas para mejor rendimiento
+### Technical Decisions
+- **Next.js 15**: Leveraging App Router and latest optimizations
+- **Tailwind CSS 4**: Utility-first system for rapid development
+- **TypeScript**: Static typing for code robustness
+- **MongoDB**: Flexible document storage for social media data
 
-### Optimizaciones Implementadas
-- **Lazy Loading**: Componentes y recursos cargados bajo demanda
-- **Image Optimization**: Next.js Image component para mejor performance
-- **CSS-in-JS**: Estilos optimizados en tiempo de build
-- **Bundle Splitting**: Código dividido para carga más rápida
+### Implemented Optimizations
+- **Lazy Loading**: Components and resources loaded on demand
+- **Image Optimization**: Next.js Image component for better performance
+- **State Management**: Efficient data flow with Zustand
+- **API Caching**: Response caching for better performance
 
-## 📞 Contacto
+## 📞 Contact
 
-**Proyecto**: Camaleonic Dashboard  
-**Desarrollador**: [Tu Nombre]  
-**Email**: [tu-email@ejemplo.com]  
-**LinkedIn**: [tu-perfil-linkedin]
+**Project**: Camaleonic Dashboard  
+**Developer**: [Your Name]  
+**Email**: [your-email@example.com]  
+**LinkedIn**: [your-linkedin-profile]
 
 ---
 
-*Desarrollado con ❤️ para la prueba técnica de Camaleonic*
+*Developed with ❤️ for Camaleonic technical test*
