@@ -16,18 +16,8 @@
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Available Scripts](#available-scripts)
-5. [📊 MongoDB and Data](#-mongodb-y-datos)
-   - [Data Structure](#estructura-de-datos)
-   - [Sample Data](#datos-de-prueba)
-   - [Troubleshooting](#troubleshooting-de-mongodb)
-6. [🎨 Design System](#-design-system)
-7. [🔄 Project Architecture](#-project-architecture)
-8. [📊 Performance Metrics](#-performance-metrics)
-9. [🔐 Security](#-security)
-10. [🚀 Deployment](#-deployment)
-11. [🤝 Contributing](#-contributing)
-12. [📝 Development Notes](#-development-notes)
-13. [📞 Contact](#-contact)
+5. [🚀 Deployment](#-deployment)
+6. [🤝 Contributing](#-contributing)
 
 ## 📋 Project Description
 
@@ -159,9 +149,6 @@ NODE_ENV=development
 MOCKAPI_BASE_URL=https://6867f54bd5933161d70a66fe.mockapi.io/api/v1
 ```
 
-### Sample Data
-The system automatically creates 6 example accounts the first time a user accesses the accounts section.
-
 5. **Run in development mode**
 ```bash
 npm run dev
@@ -196,29 +183,6 @@ npm run lint         # Run ESLint
 --neutral: #D3D4E4    /* Neutral gray */
 ```
 
-### Design Principles
-1. **Mobile-First**: Responsive design prioritizing mobile experience
-2. **Accessibility**: Proper contrast and intuitive navigation
-3. **Performance**: Optimized animations and fast loading
-4. **Consistency**: Coherent design system throughout the application
-
-
-## 📊 Performance Metrics
-
-The application is optimized for:
-- **Lighthouse Score**: 95+ in all categories
-- **Core Web Vitals**: Excellent in LCP, FID, and CLS
-- **Bundle Size**: Minimized with code splitting
-- **Animations**: 60fps with hardware acceleration
-
-## 🔐 Security
-
-- **JWT Authentication**: Secure token-based auth
-- **HTTP-only Cookies**: Protected session management
-- **Password Encryption**: Secure password storage
-- **API Protection**: Route middleware security
-- **Input Validation**: Form and data sanitization
-
 ## 🚀 Deployment
 
 ### Production Version
@@ -227,18 +191,6 @@ The application is deployed and available in production:
 - **Status**: 🟢 Active
 - **Hosting**: Vercel
 - **Last update**: July 2025
-
-### Vercel (Recommended)
-```bash
-npm run build
-vercel --prod
-```
-
-### Manual Build
-```bash
-npm run build
-npm run start
-```
 
 ## 🤝 Contributing
 
@@ -249,27 +201,6 @@ This is a technical test project, but improvements are welcome:
 3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open Pull Request
-
-## 📝 Development Notes
-
-### Technical Decisions
-- **Next.js 15**: Leveraging App Router and latest optimizations
-- **Tailwind CSS 4**: Utility-first system for rapid development
-- **TypeScript**: Static typing for code robustness
-- **MongoDB**: Flexible document storage for social media data
-
-### Implemented Optimizations
-- **Lazy Loading**: Components and resources loaded on demand
-- **Image Optimization**: Next.js Image component for better performance
-- **State Management**: Efficient data flow with Zustand
-- **API Caching**: Response caching for better performance
-
-## 📞 Contact
-
-**Project**: Camaleonic Dashboard  
-**Developer**: [Your Name]  
-**Email**: [your-email@example.com]  
-**LinkedIn**: [your-linkedin-profile]
 
 ---
 
