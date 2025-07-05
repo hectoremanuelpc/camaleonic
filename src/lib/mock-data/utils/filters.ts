@@ -36,7 +36,7 @@ export const getUniqueContentTypes = async () => {
   return [...new Set(data.map(item => item.type))];
 };
 
-export const getUniqueCategories = async (userId: string): Promise<string[]> => {
+export const getUniqueCategories = async (): Promise<string[]> => {
   try {
     const response = await fetch('/api/accounts/categories', {
       method: 'GET',

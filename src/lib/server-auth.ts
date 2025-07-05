@@ -12,7 +12,7 @@ export async function getServerUser(): Promise<JWTPayload | null> {
 
     const user = verifyToken(token);
     return user;
-  } catch (error) {
+  } catch {
     return null;
   }
 } 

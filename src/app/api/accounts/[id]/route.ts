@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerUser } from '@/lib/server-auth';
-import { accountRepository } from '@/repositories/AccountRepository';
+import { accountRepository, UpdateAccountData } from '@/repositories/AccountRepository';
 
 // GET /api/accounts/[id] - Get an account by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -17,7 +17,7 @@ export async function GET(
       );
     }
 
-    const accountId = params.id;
+    const { id: accountId } = await context.params;
 
     // Get account
     const account = await accountRepository.findById(accountId);
@@ -45,7 +45,7 @@ export async function GET(
 // PUT /api/accounts/[id] - Update an account
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -57,7 +57,7 @@ export async function PUT(
       );
     }
 
-    const accountId = params.id;
+    const { id: accountId } = await context.params;
 
     // Verify that the account exists
     const existingAccount = await accountRepository.findById(accountId);
@@ -99,7 +99,7 @@ export async function PUT(
     }
 
     // Prepare data for update
-    const updateData: any = {};
+    const updateData: UpdateAccountData = {};
     if (platform) updateData.platform = platform;
     if (username) updateData.username = username;
     if (displayName) updateData.displayName = displayName;
@@ -138,7 +138,7 @@ export async function PUT(
 // DELETE /api/accounts/[id] - Delete an account
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -150,7 +150,7 @@ export async function DELETE(
       );
     }
 
-    const accountId = params.id;
+    const { id: accountId } = await context.params;
 
     // Delete account
     const deleted = await accountRepository.delete(accountId);

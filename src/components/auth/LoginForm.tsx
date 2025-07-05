@@ -54,7 +54,7 @@ export default function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormPr
           setServerError(result.message || 'Error al iniciar sesión');
         }
       }
-    } catch (error) {
+    } catch {
       setServerError('Error de conexión. Intenta nuevamente.');
     } finally {
       setIsLoading(false);
@@ -130,7 +130,7 @@ export default function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormPr
         {onSwitchToRegister && (
           <div className="mt-6 text-center">
             <p className="text-foreground/60">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <button
                 onClick={onSwitchToRegister}
                 className="text-primary hover:underline font-medium"

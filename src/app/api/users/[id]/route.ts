@@ -2,10 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerUser } from '@/lib/server-auth';
 import { userRepository } from '@/repositories/UserRepository';
 
+interface UpdateUserData {
+  name?: string;
+  email?: string;
+  password?: string;
+}
+
 // GET /api/users/[id] - Get a user by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -17,7 +23,7 @@ export async function GET(
       );
     }
 
-    const userId = params.id;
+    const { id: userId } = await context.params;
 
     // In production, verify that the user has permissions to view this user
     // (only the user themselves or an admin)
@@ -39,7 +45,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       user: {
-        id: user._id.toString(),
+        id: user._id?.toString() || '',
         name: user.name,
         email: user.email,
         createdAt: user.createdAt,
@@ -58,7 +64,7 @@ export async function GET(
 // PATCH /api/users/[id] - Update a user
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -70,7 +76,7 @@ export async function PATCH(
       );
     }
 
-    const userId = params.id;
+    const { id: userId } = await context.params;
 
     // In production, verify that the user has permissions to update this user
     // (only the user themselves or an admin)
@@ -100,7 +106,7 @@ export async function PATCH(
     }
 
     // Prepare data for update
-    const updateData: any = {};
+    const updateData: UpdateUserData = {};
     if (name) updateData.name = name;
     if (email && email !== existingUser.email) {
       // Check if the new email is already registered
@@ -121,12 +127,19 @@ export async function PATCH(
 
     // Update user
     const updatedUser = await userRepository.updateById(userId, updateData);
+    
+    if (!updatedUser) {
+      return NextResponse.json(
+        { success: false, message: 'Error updating user' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
       message: 'User updated successfully',
       user: {
-        id: updatedUser._id.toString(),
+        id: updatedUser._id?.toString() || '',
         name: updatedUser.name,
         email: updatedUser.email,
         updatedAt: updatedUser.updatedAt
@@ -144,7 +157,7 @@ export async function PATCH(
 // DELETE /api/users/[id] - Delete a user
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -156,7 +169,7 @@ export async function DELETE(
       );
     }
 
-    const userId = params.id;
+    const { id: userId } = await context.params;
 
     // In production, verify that the user has permissions to delete this user
     // (only the user themselves or an admin)

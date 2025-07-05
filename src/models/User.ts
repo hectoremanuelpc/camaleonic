@@ -1,4 +1,3 @@
-import { mongoose } from '@/lib/mongodb';
 import { Document, Schema, model, models, Model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -53,8 +52,8 @@ userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt(12);
     this.password = await bcrypt.hash(this.password, salt);
     next();
-  } catch (error: any) {
-    next(error);
+  } catch (error: unknown) {
+    next(error as Error);
   }
 });
 

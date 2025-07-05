@@ -25,10 +25,8 @@ export async function GET(request: NextRequest) {
     } else {
       accounts = await accountRepository.findByUserId(user.userId);
     }
-    console.log('accounts', accounts);
     // Initialize test data if no accounts exist
     if (accounts.length === 0) {
-      console.log('No accounts found, initializing test data');
       await accountRepository.initializeTestData(user.userId);
       accounts = await accountRepository.findByUserId(user.userId);
     }

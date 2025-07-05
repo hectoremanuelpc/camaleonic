@@ -5,10 +5,14 @@ import { TableType } from '@/hooks/useTablesData';
 import { getUniqueCategories } from '@/lib/mock-data';
 import { useAuthStore } from '@/lib/store';
 
+interface FormDataType {
+  [key: string]: string | number | undefined;
+}
+
 interface AddFormProps {
   activeTable: TableType;
-  formData: any;
-  setFormData: (data: any) => void;
+  formData: FormDataType;
+  setFormData: (data: FormDataType) => void;
   handleAddRecord: (e: React.FormEvent) => void;
   resetForm: () => void;
 }
@@ -26,7 +30,7 @@ export const AddForm = ({
   useEffect(() => {
     const loadCategories = async () => {
       if (user) {
-        const uniqueCategories = await getUniqueCategories(user.id);
+        const uniqueCategories = await getUniqueCategories();
         setCategories(uniqueCategories);
       }
     };
@@ -271,7 +275,7 @@ export const AddForm = ({
             <input
               type="number"
               value={formData.followers || ''}
-              onChange={(e) => setFormData({...formData, followers: parseInt(e.target.value)})}
+              onChange={(e) => setFormData({...formData, followers: e.target.value})}
               className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               required
             />
@@ -281,7 +285,7 @@ export const AddForm = ({
             <input
               type="number"
               value={formData.following || ''}
-              onChange={(e) => setFormData({...formData, following: parseInt(e.target.value)})}
+              onChange={(e) => setFormData({...formData, following: e.target.value})}
               className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               required
             />
@@ -291,7 +295,7 @@ export const AddForm = ({
             <input
               type="number"
               value={formData.posts || ''}
-              onChange={(e) => setFormData({...formData, posts: parseInt(e.target.value)})}
+              onChange={(e) => setFormData({...formData, posts: e.target.value})}
               className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               required
             />
@@ -310,7 +314,7 @@ export const AddForm = ({
             <label className="block text-sm font-medium text-foreground mb-2">Verified</label>
             <select
               value={formData.verified || ''}
-              onChange={(e) => setFormData({...formData, verified: e.target.value === 'true'})}
+              onChange={(e) => setFormData({...formData, verified: e.target.value})}
               className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               required
             >
@@ -323,7 +327,7 @@ export const AddForm = ({
             <label className="block text-sm font-medium text-foreground mb-2">Status</label>
             <select
               value={formData.isActive || ''}
-              onChange={(e) => setFormData({...formData, isActive: e.target.value === 'true'})}
+              onChange={(e) => setFormData({...formData, isActive: e.target.value})}
               className="w-full px-3 py-2 border border-neutral/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               required
             >

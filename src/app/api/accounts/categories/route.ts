@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerUser } from '@/lib/server-auth';
 import { accountRepository } from '@/repositories/AccountRepository';
 
 // GET /api/accounts/categories - Get unique categories for user accounts
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Verify authentication
     const user = await getServerUser();

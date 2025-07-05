@@ -22,7 +22,7 @@ export const CallToAction = ({ isVisible }: CallToActionProps) => {
             Join thousands of creators and businesses already maximizing their digital presence with our dashboard.
           </p>
           <button onClick={handleStartNow} className="gradient-primary text-white px-12 py-6 rounded-2xl text-xl font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl animate-pulse-glow cursor-pointer">
-            Start Now - It's Free
+            Start Now - It&apos;s Free
           </button>
         </div>
       </div>

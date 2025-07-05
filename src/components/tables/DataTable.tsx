@@ -2,20 +2,26 @@ import { useState } from 'react';
 import { TableType } from '@/hooks/useTablesData';
 import { SocialMetricsData, ContentData, AccountData } from '@/lib/mock-data';
 
+type TableRecord = SocialMetricsData | ContentData | AccountData;
+
+// Definición de tipo para los datos del formulario
+type FormDataType = Record<string, any>;
+
 interface DataTableProps {
   activeTable: TableType;
-  data: SocialMetricsData[] | ContentData[] | AccountData[];
+  data: TableRecord[];
   deleteRecord: (id: string) => Promise<void>;
-  updateRecord: (id: string, updatedData: any) => Promise<any>;
+  updateRecord: (id: string, updatedData: Record<string, unknown>) => Promise<TableRecord | null>;
 }
 
 export const DataTable = ({ activeTable, data, deleteRecord, updateRecord }: DataTableProps) => {
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [editFormData, setEditFormData] = useState<any>({});
+  const [editFormData, setEditFormData] = useState<FormDataType>({});
 
-  const handleEditClick = (record: any) => {
+  const handleEditClick = (record: TableRecord) => {
     setEditingId(record.id);
-    setEditFormData(record);
+    // Convertir el registro a FormDataType
+    setEditFormData(record as FormDataType);
   };
 
   const handleSaveEdit = async () => {

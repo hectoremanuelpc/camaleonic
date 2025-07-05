@@ -29,14 +29,14 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
       setPlatforms(uniquePlatforms);
 
       if (user) {
-        const uniqueCategories = await getUniqueCategories(user.id);
+        const uniqueCategories = await getUniqueCategories();
         setCategories(uniqueCategories);
       }
     };
     loadData();
   }, [user]);
 
-  const handleFilterChange = (key: keyof FilterState, value: any) => {
+  const handleFilterChange = (key: keyof FilterState, value: string) => {
     onFiltersChange({
       ...filters,
       [key]: value,

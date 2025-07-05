@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SOCIAL_METRICS_URL, CONTENT_URL, API_BASE_URL } from '../constants/api';
+import { SOCIAL_METRICS_URL, CONTENT_URL } from '../constants/api';
 import { SocialMetricsData, ContentData, AccountData } from '../types/social';
 
 // ============ MÉTRICAS SOCIALES ============

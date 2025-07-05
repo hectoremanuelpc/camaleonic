@@ -3,6 +3,16 @@ import User, { IUser } from '@/models/User';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Types } from 'mongoose';
 
+// Definir interfaces para los tipos de retorno
+interface UserResponse {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+  [key: string]: any; // Para otros campos que puedan existir
+}
+
 /**
  * Repositorio para operaciones CRUD de usuarios
  */
@@ -15,7 +25,7 @@ class UserRepository extends BaseRepository<IUser> {
    * Buscar un usuario por email
    * @param email Email del usuario
    */
-  async findByEmail(email: string): Promise<any> {
+  async findByEmail(email: string): Promise<IUser | null> {
     return this.findOne({ email });
   }
 
@@ -36,7 +46,7 @@ class UserRepository extends BaseRepository<IUser> {
     name: string;
     email: string;
     password: string;
-  }): Promise<any> {
+  }): Promise<UserResponse> {
     await connectToDatabase();
     const user = await this.create(userData);
     
@@ -55,7 +65,7 @@ class UserRepository extends BaseRepository<IUser> {
    * @param email Email del usuario
    * @param password Contraseña del usuario
    */
-  async authenticate(email: string, password: string): Promise<any> {
+  async authenticate(email: string, password: string): Promise<UserResponse | null> {
     // Asegurar conexión a la base de datos
     await connectToDatabase();
     

@@ -15,7 +15,7 @@ export class BaseRepository<T extends Document> {
    * Crear un nuevo documento
    * @param data Datos para crear el documento
    */
-  async create(data: Record<string, any>): Promise<any> {
+  async create(data: Record<string, unknown>): Promise<T> {
     await connectToDatabase();
     return this.model.create(data);
   }

@@ -151,7 +151,7 @@ class AccountRepository {
   async isUsernameExists(username: string, platform: string, excludeId?: string): Promise<boolean> {
     await this.ensureConnection();
     
-    const query: any = { username, platform };
+    const query: { username: string; platform: string; _id?: { $ne: string } } = { username, platform };
     if (excludeId) {
       query._id = { $ne: excludeId };
     }
@@ -167,10 +167,8 @@ class AccountRepository {
     // Verificar si ya existen cuentas para este usuario
     const existingCount = await this.count(userId);
     if (existingCount > 0) {
-      console.log('Ya existen cuentas para este usuario');
       return;
     }
-    console.log('No hay cuentas, inicializando datos de prueba');
     const testAccounts: Omit<CreateAccountData, 'userId'>[] = [
       {
         platform: 'Instagram',
@@ -249,8 +247,6 @@ class AccountRepository {
     for (const accountData of testAccounts) {
       await this.create({ ...accountData, userId });
     }
-
-    console.log(`Inicializadas ${testAccounts.length} cuentas de prueba`);
   }
 
   async getUniqueCategories(userId: string): Promise<string[]> {

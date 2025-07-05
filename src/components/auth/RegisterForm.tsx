@@ -54,10 +54,10 @@ export default function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFor
             });
           });
         } else {
-          setServerError(result.message || 'Error al registrar usuario');
+          setServerError(result.message || 'Error al registrarse');
         }
       }
-    } catch (error) {
+    } catch {
       setServerError('Error de conexión. Intenta nuevamente.');
     } finally {
       setIsLoading(false);
