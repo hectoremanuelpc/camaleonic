@@ -1,8 +1,37 @@
 # 🚀 Camaleonic - Social Media Dashboard
 
+> **Try it now!** Production version available at: [https://camaleonic.vercel.app](https://camaleonic.vercel.app)
+
+## 📑 Table of Contents
+
+1. [📋 Project Description](#-project-description)
+2. [✨ Key Features](#-key-features)
+   - [🎨 Design & UX](#-design--ux)
+   - [🔧 Technical Features](#-technical-features)
+   - [📊 Dashboard Features](#-dashboard-features)
+   - [📱 Data Management](#-data-management)
+   - [🔐 Security Features](#-security-features)
+3. [🛠️ Technology Stack](#️-technology-stack)
+4. [🚀 Setup and Installation](#-setup-and-installation)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+   - [Available Scripts](#available-scripts)
+5. [📊 MongoDB and Data](#-mongodb-y-datos)
+   - [Data Structure](#estructura-de-datos)
+   - [Sample Data](#datos-de-prueba)
+   - [Troubleshooting](#troubleshooting-de-mongodb)
+6. [🎨 Design System](#-design-system)
+7. [🔄 Project Architecture](#-project-architecture)
+8. [📊 Performance Metrics](#-performance-metrics)
+9. [🔐 Security](#-security)
+10. [🚀 Deployment](#-deployment)
+11. [🤝 Contributing](#-contributing)
+12. [📝 Development Notes](#-development-notes)
+13. [📞 Contact](#-contact)
+
 ## 📋 Project Description
 
-A modern social media dashboard developed for **Camaleonic**. The application allows users to view, analyze, and manage multiple social media platforms through a unified and intuitive interface.
+A modern social media dashboard developed for **Camaleonic Analytics**. The application allows users to view, analyze, and manage multiple social media platforms through a unified and intuitive interface.
 
 ## ✨ Key Features
 
@@ -72,7 +101,7 @@ A modern social media dashboard developed for **Camaleonic**. The application al
 
 1. **Clone the repository**
 ```bash
-git clone [https://github.com/hectoremanuelpc/camaleonic.git]
+git clone https://github.com/hectoremanuelpc/camaleonic.git
 cd camaleonic
 ```
 
@@ -89,9 +118,9 @@ bun install
 
 3. **Configure MongoDB**
 
-#### Opción A: MongoDB Local
+#### Option A: Local MongoDB
 ```bash
-# macOS (con Homebrew)
+# macOS (with Homebrew)
 brew install mongodb-community
 brew services start mongodb-community
 
@@ -100,35 +129,38 @@ sudo apt-get install mongodb
 sudo systemctl start mongodb
 
 # Windows
-# Descargar e instalar desde https://www.mongodb.com/try/download/community
+# Download and install from https://www.mongodb.com/try/download/community
 ```
 
-#### Opción B: MongoDB Atlas (Recomendado para producción)
-1. Crear cuenta en [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Crear un cluster gratuito
-3. Configurar usuario y contraseña
-4. Obtener string de conexión
-5. Agregar IP a whitelist
+#### Option B: MongoDB Atlas (Recommended for production)
+1. Create account at [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Create a free cluster
+3. Set up user and password
+4. Get connection string
+5. Add IP to whitelist
 
-4. **Configurar variables de entorno**
+4. **Configure environment variables**
 
-Crea un archivo `.env` en la raíz del proyecto:
+Create a `.env` file in the project root:
 
 ```env
-# Base de datos MongoDB (requerido)
+# MongoDB Database (required)
 MONGODB_URI=mongodb://localhost:27017/camaleonic
-# O para MongoDB Atlas:
+# Or for MongoDB Atlas:
 # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/camaleonic
 
-# JWT Secret (requerido)
-JWT_SECRET=tu_jwt_secret_super_seguro_aqui
+# JWT Secret (required)
+JWT_SECRET=your_super_secure_jwt_secret_here
 
-# Configuración del entorno
+# Environment configuration
 NODE_ENV=development
 
-# URLs de MockAPI (para métricas y contenido)
+# MockAPI URLs (for metrics and content)
 MOCKAPI_BASE_URL=https://6867f54bd5933161d70a66fe.mockapi.io/api/v1
 ```
+
+### Sample Data
+The system automatically creates 6 example accounts the first time a user accesses the accounts section.
 
 5. **Run in development mode**
 ```bash
@@ -152,11 +184,6 @@ npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
 ```
-
-## 📊 MongoDB y Datos
-
-### Datos de Prueba
-El sistema crea automáticamente 6 cuentas de ejemplo la primera vez que un usuario accede a la sección de cuentas.
 
 ## 🎨 Design System
 
@@ -193,6 +220,13 @@ The application is optimized for:
 - **Input Validation**: Form and data sanitization
 
 ## 🚀 Deployment
+
+### Production Version
+The application is deployed and available in production:
+- **URL**: [https://camaleonic.vercel.app](https://camaleonic.vercel.app)
+- **Status**: 🟢 Active
+- **Hosting**: Vercel
+- **Last update**: July 2025
 
 ### Vercel (Recommended)
 ```bash
@@ -239,4 +273,4 @@ This is a technical test project, but improvements are welcome:
 
 ---
 
-*Developed with ❤️ for Camaleonic technical test*
+*Developed with ❤️ for Camaleonic Analytics technical test*
