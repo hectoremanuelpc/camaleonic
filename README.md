@@ -66,6 +66,7 @@ A modern social media dashboard developed for **Camaleonic**. The application al
 ### Prerequisites
 - **Node.js** 18.17 or higher
 - **npm**, **yarn**, **pnpm**, or **bun**
+- **MongoDB** (local installation or MongoDB Atlas account)
 
 ### Installation
 
@@ -86,7 +87,50 @@ pnpm install
 bun install
 ```
 
-3. **Run in development mode**
+3. **Configure MongoDB**
+
+#### Opción A: MongoDB Local
+```bash
+# macOS (con Homebrew)
+brew install mongodb-community
+brew services start mongodb-community
+
+# Ubuntu/Debian
+sudo apt-get install mongodb
+sudo systemctl start mongodb
+
+# Windows
+# Descargar e instalar desde https://www.mongodb.com/try/download/community
+```
+
+#### Opción B: MongoDB Atlas (Recomendado para producción)
+1. Crear cuenta en [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Crear un cluster gratuito
+3. Configurar usuario y contraseña
+4. Obtener string de conexión
+5. Agregar IP a whitelist
+
+4. **Configurar variables de entorno**
+
+Crea un archivo `.env` en la raíz del proyecto:
+
+```env
+# Base de datos MongoDB (requerido)
+MONGODB_URI=mongodb://localhost:27017/camaleonic
+# O para MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/camaleonic
+
+# JWT Secret (requerido)
+JWT_SECRET=tu_jwt_secret_super_seguro_aqui
+
+# Configuración del entorno
+NODE_ENV=development
+
+# URLs de MockAPI (para métricas y contenido)
+MOCKAPI_BASE_URL=https://6867f54bd5933161d70a66fe.mockapi.io/api/v1
+```
+
+5. **Run in development mode**
 ```bash
 npm run dev
 # or
@@ -97,7 +141,7 @@ pnpm dev
 bun dev
 ```
 
-4. **Open in browser**
+6. **Open in browser**
 Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Available Scripts
@@ -108,6 +152,11 @@ npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
 ```
+
+## 📊 MongoDB y Datos
+
+### Datos de Prueba
+El sistema crea automáticamente 6 cuentas de ejemplo la primera vez que un usuario accede a la sección de cuentas.
 
 ## 🎨 Design System
 
@@ -126,23 +175,6 @@ npm run lint         # Run ESLint
 3. **Performance**: Optimized animations and fast loading
 4. **Consistency**: Coherent design system throughout the application
 
-## 🔄 Project Architecture
-
-```
-camaleonic/
-├── src/
-│   ├── app/              # Next.js App Router
-│   │   ├── api/         # API routes
-│   │   ├── dashboard/   # Dashboard pages
-│   │   └── tables/      # Data management
-│   ├── components/      # React components
-│   ├── hooks/           # Custom hooks
-│   ├── lib/             # Utilities
-│   ├── models/          # Data models
-│   └── repositories/    # Data access
-├── public/             # Static assets
-└── docs/              # Documentation
-```
 
 ## 📊 Performance Metrics
 
