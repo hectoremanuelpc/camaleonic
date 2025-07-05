@@ -1,4 +1,6 @@
 import { useModal } from "../ClientLayout";
+import { useAuthStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
 
 interface HeroSectionProps {
   isVisible: boolean;
@@ -6,9 +8,15 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ isVisible }: HeroSectionProps) => {
   const { openRegisterModal } = useModal();
+  const { user } = useAuthStore();
+  const router = useRouter();
 
   const handleRegister = () => {
-    openRegisterModal();
+    if (user) {
+      router.push('/dashboard');
+    } else {
+      openRegisterModal();
+    }
   };
 
   return (
@@ -29,7 +37,7 @@ export const HeroSection = ({ isVisible }: HeroSectionProps) => {
           {/* CTA Buttons */}
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-700 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <button onClick={handleRegister} className="cursor-pointer gradient-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Start Free
+              {user ? 'Go to Dashboard' : 'Start Free'}
             </button>
             <button className="cursor-pointer border-2 border-primary text-primary px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300">
               View Demo

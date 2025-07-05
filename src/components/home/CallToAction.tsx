@@ -1,4 +1,6 @@
 import { useModal } from "../ClientLayout";
+import { useAuthStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
 
 interface CallToActionProps {
   isVisible: boolean;
@@ -6,9 +8,15 @@ interface CallToActionProps {
 
 export const CallToAction = ({ isVisible }: CallToActionProps) => {
   const { openRegisterModal } = useModal();
+  const { user } = useAuthStore();
+  const router = useRouter();
 
   const handleStartNow = () => {
-    openRegisterModal();
+    if (user) {
+      router.push('/dashboard');
+    } else {
+      openRegisterModal();
+    }
   };
 
   return (
@@ -22,7 +30,7 @@ export const CallToAction = ({ isVisible }: CallToActionProps) => {
             Join thousands of creators and businesses already maximizing their digital presence with our dashboard.
           </p>
           <button onClick={handleStartNow} className="gradient-primary text-white px-12 py-6 rounded-2xl text-xl font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl animate-pulse-glow cursor-pointer">
-            Start Now - It&apos;s Free
+            {user ? 'Go to Dashboard' : 'Start Now - It\'s Free'}
           </button>
         </div>
       </div>
